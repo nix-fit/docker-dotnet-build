@@ -5,11 +5,10 @@ LABEL org.opencontainers.image.authors="wizardy.oni@gmail.com"
 USER root
 
 # Install dotnet
-ARG DOTNET_MAJOR_VERSION=9.0
-ARG DOTNET_VERSION=9.0.112
+ARG DOTNET_VERSION=9.0
 RUN microdnf -y --refresh \
                 --setopt=install_weak_deps=0 \
-                --setopt=tsflags=nodocs install dotnet-sdk-${DOTNET_MAJOR_VERSION}-${DOTNET_VERSION} \
+                --setopt=tsflags=nodocs install dotnet-sdk-${DOTNET_VERSION} \
     && dotnet --version\
     && microdnf clean all \
     && rm -rf /var/cache/dnf /var/cache/yum
